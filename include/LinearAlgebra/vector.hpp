@@ -23,7 +23,7 @@ public :
     Vector(size_t size, const T& value);
     Vector(std::vector<T>& vec);
 
-    // Copy constructor
+    // Copy and move constructor
     Vector(const Vector<T>& other) = default;
     Vector(Vector<T>&& other) = default;
     Vector& operator=(const Vector<T>& other) = default;
@@ -44,6 +44,7 @@ public :
     Vector<T> operator+(const Vector<T>& other) const;
     Vector<T> operator-(const Vector<T>& other) const;
     Vector<T> operator*(const T& scalar) const;
+    Vector<T> operator+(const T& scalar) const;
     T dot(const Vector<T>& other) const;
     T norm() const;
 
@@ -147,6 +148,14 @@ Vector<T> Vector<T>::operator*(const T& scalar) const
 {
     Vector<T> result(this->_size);
     std::transform(this->data.begin(), this->data.end(), result.data.begin(), std::bind(std::multiplies<T>(), std::placeholders::_1, scalar));
+    return result;
+}
+
+template <typename T>
+Vector<T> Vector<T>::operator+(const T& scalar) const
+{
+    Vector<T> result(this->_size);
+    std::transform(this->data.begin(), this->data.end(), result.data.begin(), std::bind(std::plus<T>(), std::placeholders::_1, scalar));
     return result;
 }
 

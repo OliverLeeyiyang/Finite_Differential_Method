@@ -97,6 +97,15 @@ TEST(VectorTest, TimesOperator) {
     EXPECT_EQ(vec2[2], 4);
 }
 
+TEST(VectorTest, ScalarPlusOperator) {
+    FDMVector vec1(3, 1);
+    int scalar = 2;
+    FDMVector vec2 = vec1 + scalar;
+    EXPECT_EQ(vec2[0], 3);
+    EXPECT_EQ(vec2[1], 3);
+    EXPECT_EQ(vec2[2], 3);
+}
+
 TEST(VectorTest, DotProduct) {
     FDMVector vec1(3, 1);
     FDMVector vec2(3, 2);

@@ -21,7 +21,7 @@ public:
     Matrix();
     explicit Matrix(const size_t rows, const size_t cols);
     Matrix(const size_t rows, const size_t cols, const T& value);
-    Matrix(const VV& data);
+    Matrix(VV& matrix);
 
     // Regular Constructors
     Matrix(const Matrix& other) = default;
@@ -63,7 +63,7 @@ public:
 private:
     size_t _rows; 
     size_t _cols;
-    std::vector<Vector<T>> data; 
+    std::vector<Vector<T>> data;
 
 }; // class Matrix
 
@@ -88,13 +88,13 @@ Matrix<T>::Matrix(const size_t rows, const size_t cols, const T& value) : _rows{
 }
 
 template <typename T>
-Matrix<T>::Matrix(const VV& data) : _rows{data.size()}, _cols{data[0].size()}
+Matrix<T>::Matrix(VV& matrix) : _rows{matrix.size()}, _cols{matrix[0].size()}
 {
     assert(_rows > 0);
     assert(_cols > 0);
     this->data = std::vector<Vector<T>>(_rows);
     for (size_t i = 0; i < _rows; i++) {
-        this->data[i] = Vector<T>(data[i]);
+        this->data[i] = Vector<T>(matrix[i]);
     }
 }
 

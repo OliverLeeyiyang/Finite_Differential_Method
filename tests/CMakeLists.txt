@@ -18,3 +18,4 @@ function(add_gtest_executable TEST_NAME LIB)
 endfunction()
 
 add_gtest_executable(vector_test LinearAlgebra)
+add_gtest_executable(matrix_test LinearAlgebra)
