@@ -1,6 +1,6 @@
-set(LINEARALGEBRA_SOURCES
-    ${CMAKE_CURRENT_SOURCE_DIR}/matrix.hpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/vector.hpp
-)
+# Create a library named LinearAlgebra
+set(LA_SOURCES vector.hpp matrix.hpp)
+add_library(LinearAlgebra INTERFACE ${LA_SOURCES})
 
-target_sources(FDM_MATH PUBLIC ${LINEARALGEBRA_SOURCES})
+# Specify that the library includes header files from this directory
+target_include_directories(LinearAlgebra INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})

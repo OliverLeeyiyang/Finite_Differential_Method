@@ -2,7 +2,7 @@
 #include <cassert>
 #include <vector>
 
-#include "include/LinearAlgebra/vector.hpp"
+#include "vector.hpp"
 
 int main()
 {
